@@ -1,0 +1,50 @@
+.page {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    width: 1280px;
+    height: 1217px;
+    background-color: #000000;
+}
+
+.header {
+    width: 880px;
+    height: 74px;
+    margin: 0 auto;
+    padding-top: 45px;
+    border-bottom: 1px solid #545454;
+}
+
+.content {
+    width: 880px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+.profile__avatar {
+    width: 120px;
+    border-radius: 50%;
+}
+
+.elements {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    row-gap: 20px;
+    margin-top: 50px;
+}
+
+.element{
+    background-color: white;
+    border-radius: 10px;
+    box-sizing: border-box; 
+    width: 282px;
+    position: relative;
+    list-style: none;
+}
+.element__img {
+    width: 282px;
+    border-radius: 10px 10px 0 0 ;
+}
+
+.element__info {
+
+}
