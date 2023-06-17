@@ -15,47 +15,77 @@
         </header>
         <main class="content">
             <section class="profile">
-                <img src="./image/image.jpg" alt="" class="profile__avatar">
+                <div class="profile__avatar-page">
+                    <img src="./image/image.jpg" alt="Аватарка" class="profile__avatar">
+                </div>
+                <div class="profile__info">
+                    <div class="profile__title">
+                        <h1 class="profile__usermane">Жак-Ив Кусто</h1>
+                        <button class="button button_type_edit" type="button"></button>
+                    </div>
+                    <p class="profile__about">Исследователь океана</p>
+                </div>
+                <button class="button button_type_add" type="button"></button>
             </section>
             <section class="elements">
                 <li class="element">
                     <img src="./image/Карачаевск.jpg" alt="Карачаевск" class="element__img">
-                    <div class="element__info>">
-                        <h3 class="element__title">Карачаевск</h3>
+                    <div class="element__info">
+                        <h2 class="element__title">Карачаевск</h2>
+                        <button class="button button_type_like" type="button"></button>
                     </div>
                 </li>
                 <li class="element">
                     <img src="./image/Эльбрус 1.png" alt="Эльбрус" class="element__img">
-                    <div class="element__info>">
-                        <h3 class="element__title">Гора Эльбрус</h3>
+                    <div class="element__info">
+                        <h2 class="element__title">Гора Эльбрус</h2>
+                        <button class="button button_type_like" type="button"></button>
                     </div>
                 </li>
                 <li class="element">
                     <img src="./image/Домбай.png" alt="Домбай" class="element__img">
-                    <div class="element__info>">
-                        <h3 class="element__title">Домбай</h3>
+                    <div class="element__info">
+                        <h2 class="element__title">Домбай</h2>
+                        <button class="button button_type_like" type="button"></button>
                     </div>
                 </li>
                 <li class="element">
                     <img src="./image/Эльбрус 1.png" class="element__img">
-                    <div class="element__info>">
-                        <h3 class="element__title">Гора Эльбрус</h3>
+                    <div class="element__info">
+                        <h2 class="element__title">Гора Эльбрус</h2>
+                        <button class="button button_type_like" type="button"></button>
                     </div>
                 </li>
                 <li class="element">
                     <img src="./image/Домбай.png" alt="Домбай" class="element__img">
-                    <div class="element__info>">
-                        <h3 class="element__title">Домбай</h3>
+                    <div class="element__info">
+                        <h2 class="element__title">Домбай</h2>
+                        <button class="button button_type_like" type="button"></button>
                     </div>
                 </li>
                 <li class="element">
                     <img src="./image/Карачаевск.jpg" alt="Карачаевск" class="element__img">
-                    <div class="element__info>">
-                        <h3 class="element__title">Карачаево-Черкессия</h3>
+                    <div class="element__info">
+                        <h2 class="element__title">Карачаево-Черкессия</h2>
+                        <button class="button button_type_like" type="button"></button>
                     </div>
                 </li>
             </section>
         </main>
+        <footer class="footer">
+            <p class="footer__copyright">©&nbsp;2023 Mesto Russia</p>
+        </footer>
+        <div class="popup">
+            <div class="popup__wrapper">
+                <button class="popup__close" type="button"></button>
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <form action="#" class="form popup__form">
+                    <input type="text" name="username" class="popup__input">
+                    <input type="text" name="about" class="popup__input">
+                    <button type="submit" class="form__submit">Сохранить</button>
+                </form>
+            </div>
+    </div>
     </div>
 </body>
 
