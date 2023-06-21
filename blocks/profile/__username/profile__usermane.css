@@ -1,0 +1,17 @@
+.profile__usermane {
+    width: 294px;
+    margin: 0 0 8px;
+    color: white;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 48px;
+}
+
+@media screen and (max-width: 767px) {
+    .profile__usermane {
+        max-width: 189px;
+        font-size: 27px;
+        line-height: 33px;
+        margin: auto;
+    }
+}
