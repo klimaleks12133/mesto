@@ -75,13 +75,15 @@
             <p class="footer__copyright">©&nbsp;2023 Mesto Russia</p>
         </footer>
         <div class="popup">
-            <form name="popup" class="popup__container">
-                <p class="popup__title">Редактировать профиль</p>
-                <input name="name" class="popup__input" type="text">
-                <input name="job" class="popup__input" type="text">
-                <button type="submit" class="popup__save-button">Сохранить</button>
-                <button type="button" class="popup__close-button"></button>
-            </form>
+            <div class="popup__wrapper">
+                <button class="popup__close" type="button"></button>
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <form action="#" class="form popup__form">
+                    <input type="text" name="username" class="popup__input popup__input_username">
+                    <input type="text" name="job" class="popup__input popup__input_job">
+                    <button type="submit" class="popup__form_submit">Сохранить</button>
+                </form>
+            </div>
         </div>
     </div>
     <script src="scripts/script.js"></script>
