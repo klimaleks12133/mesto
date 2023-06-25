@@ -26,6 +26,5 @@ function handleFormSubmit(evt) {
 }
 
 popupForm.addEventListener("submit", handleFormSubmit);
-
-openProfileButton.addEventListener("click", openProfileButton);
+profileButton.addEventListener("click", openProfileButton);
 popupButtonClose.addEventListener("click", closePopupButton);
