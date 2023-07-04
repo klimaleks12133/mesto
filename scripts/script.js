@@ -1,7 +1,7 @@
 const initialCards = [
   {
-    name: 'Санкт-Петербург',
-    link: 'https://unsplash.com/photos/IRApkV3PxwQ'
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
     name: 'Челябинская область',
@@ -54,6 +54,13 @@ const createCard = (photoName, photoLink) => {
   const card = cardTemplate.querySelector('.element').cloneNode(true);
   card.querySelector('.element__title').textContent = photoName;
   card.querySelector('.element__img').src = photoLink;
+  card.querySelector('.element__delete').addEventListener('click', () => {
+    card.remove();
+  });
+  const buttonLike = card.querySelector('.element__button');
+  buttonLike.addEventListener('click', () => {
+    buttonLike.classList.toggle('element__button_active');
+  });
   return card;
 };
 
