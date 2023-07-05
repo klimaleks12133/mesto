@@ -1,4 +1,4 @@
-.popup-image__close {
+.popup__close_image {
     margin: 0;
     padding: 0;
     position: absolute;
@@ -15,6 +15,6 @@
     align-self: flex-end;
 }
 
-.popup-image__close:hover {
+.popup__close__image:hover {
     opacity: .6;
 }
