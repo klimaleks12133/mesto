@@ -1,3 +1,18 @@
+@import url("../blocks/popup-add/__close/popup-add__close.css");
+@import url("../blocks/popup-add/__title/popup-add__title.css");
+@import url("../blocks/popup-add/__wrapper/popup-add__wrapper.css");
+@import url("../blocks/popup-add/_opened/popup-add_opened.css");
+@import url("../blocks/popup-add/popup-add.css");
+@import url("../blocks/popup-image/__caption/popup-image__caption.css");
+@import url("../blocks/popup-image/__close/popup-image__close.css");
+@import url("../blocks/popup-image/__photo/popup-image__photo.css");
+@import url("../blocks/popup-image/__wrapper/popup-image__wrapper.css");
+@import url("../blocks/popup-image/_opened/popup-image_opened.css");
+@import url("../blocks/popup-image/popup-image.css");
+
+opacity: 0;
+visibility: hidden;
+
 openPopupButtons.forEach( function (button) {
   button.addEventListener('click', function (e) {
     e.preventDefault();

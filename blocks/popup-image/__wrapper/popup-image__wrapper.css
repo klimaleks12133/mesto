@@ -1,0 +1,13 @@
+.popup-image__wrapper {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: flex;
+    z-index: 1000;
+    max-width: calc(75vw + 40px);
+    flex-direction: column;
+    align-items: center;
+    border: 0;
+    box-shadow: 0;
+    background: 0;
+}
