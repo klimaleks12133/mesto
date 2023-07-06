@@ -1,48 +1,18 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-
-  }
-];
-
 const content = document.querySelector(".content");
-const popup = document.querySelector(".popup");
+const popupEdit = document.querySelector(".popup");
 const popupAdd = document.querySelector(".popup_add");
 const popupImage = document.querySelector('.popup_image');
-const profileButton = content.querySelector(".profile__edit-button");
+const profileEditButton = content.querySelector(".profile__edit-button");
 const profileAddButton = content.querySelector(".profile__add-button");
 const buttonCloseImage = popupImage.querySelector(".popup__close");
-const popupButtonClose = document.querySelector(".popup__close");
+const popupEditClose = document.querySelector(".popup__close");
 const closeAddButton = document.querySelector(".popup__close_add");
 const profileTitle = content.querySelector(".profile__usermane");
 const profileSubtitle = content.querySelector(".profile__about");
-const popupForm = document.querySelector(".popup__form");
+const formEdit = document.querySelector(".popup__form");
+const formAdd = popupAdd.querySelector('.popup__form');
 const nameInput = document.querySelector(".popup__input_type_username");
 const jobInput = document.querySelector(".popup__input_type_job");
-const formAdd = popupAdd.querySelector('.popup__form');
 const inputPhotoName = formAdd.querySelector('.popup__input_type_title');
 const inputPhotoLink = formAdd.querySelector('.popup__input_type_link');
 const elementContainer = document.querySelector('.elements');
@@ -79,12 +49,13 @@ const addCard = (evt) => {
   const photoName = inputPhotoName.value;
   const photoLink = inputPhotoLink.value;
   renderCard(photoName, photoLink);
-  inputPhotoName.value = '';
+  inputPhotoName.reset = '';
   inputPhotoLink.value = '';
+  closePopupAdd();
 }
-closePopupAdd();
 
-const createInitialCards = initialCards.map(function (initialCard) {
+
+initialCards.forEach(function (initialCard) {
   renderCard(initialCard.name, initialCard.link);
 });
 
@@ -92,8 +63,8 @@ function openPopupImage() {
   popupImage.classList.add('popup_image_opened');
 };
 
-function openProfileButton() {
-  popup.classList.add("popup_opened");
+function openProfilePopup() {
+  popupEdit.classList.add("popup_opened");
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
 }
@@ -110,12 +81,8 @@ function handleFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
-  closePopupButton();
+  closeProfilePopup();
 }
-
-function closePopupAdd() {
-  popupAdd.classList.remove('popup_opened');
-};
 
 function closePopupAdd() {
   popupAdd.classList.remove('popup_add_opened');
@@ -125,17 +92,17 @@ function closePopupImage() {
   popupImage.classList.remove('popup_image_opened');
 };
 
-function closePopupButton() {
-  popup.classList.remove("popup_opened");
+function closeProfilePopup() {
+  popupEdit.classList.remove("popup_opened");
 }
 
 function closePopupImage() {
   popupImage.classList.remove('popup_image_opened');
 };
 
-popupForm.addEventListener("submit", handleFormSubmit);
-profileButton.addEventListener("click", openProfileButton);
-popupButtonClose.addEventListener("click", closePopupButton);
+formEdit.addEventListener("submit", handleFormSubmit);
+profileEditButton.addEventListener("click", openProfilePopup);
+popupEditClose.addEventListener("click", closeProfilePopup);
 profileAddButton.addEventListener('click', openPopupAdd);
 closeAddButton.addEventListener('click', closePopupAdd);
 buttonCloseImage.addEventListener('click', closePopupImage);

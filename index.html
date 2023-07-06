@@ -22,15 +22,13 @@
                 <div class="profile__info">
                     <div class="profile__title">
                         <h1 class="profile__usermane">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button" type="button"></button>
+                        <button class="profile__edit-button" type="button" aria-label="Редактирование профиля"></button>
                     </div>
                     <p class="profile__about">Исследователь океана</p>
                 </div>
                 <button class="profile__add-button" type="button"></button>
             </section>
             <section class="elements">
-                <div class="element">
-                </div>
             </section>
         </main>
         <footer class="footer">
@@ -42,8 +40,8 @@
                 <button class="popup__close" type="button"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form action="#" name="form" class="form popup__form">
-                    <input type="text" name="username" class="popup__input popup__input_type_username">
-                    <input type="text" name="job" class="popup__input popup__input_type_job">
+                    <input type="text" name="username" placeholder="Имя" class="popup__input popup__input_type_username" required>
+                    <input type="text" name="job" placeholder="О себе" class="popup__input popup__input_type_job" required>
                     <button type="submit" class="popup__form-submit">Сохранить</button>
                 </form>
             </div>
@@ -54,7 +52,7 @@
                 <h3 class="popup__title">Новое место</h3>
                 <form action="#" name="form" class="form popup__form">
                     <input type="text" name="title" class="popup__input popup__input_type_title" placeholder="Название">
-                    <input type="text" name="link" class="popup__input popup__input_type_link"
+                    <input type="url" name="link" class="popup__input popup__input_type_link"
                         placeholder="Ссылка на картинку">
                     <button type="submit" class="popup__form-submit">Создать</button>
                 </form>
@@ -71,7 +69,7 @@
     <template id="element-template">
         <div class="element">
             <button type="button" class="element__delete"></button>
-            <img class="element__img" src="#" alt="">
+            <img class="element__img" src="#" alt="Фотография места">
             <div class="element__info">
                 <h2 class="element__title"></h2>
                 <button class="element__button" type="button"></button>
@@ -79,8 +77,8 @@
         </div>
     </template>
 
-
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/constants.js"></script>
+    <script src="./scripts/script.js" defer></script>
 </body>
 
 </html>
