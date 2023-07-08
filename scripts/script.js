@@ -1,12 +1,12 @@
 const content = document.querySelector(".content");
-const popupEdit = document.querySelector(".popup");
+const popupEdit = document.querySelector(".popup_edit");
 const popupAdd = document.querySelector(".popup_add");
 const popupImage = document.querySelector('.popup_image');
 const profileEditButton = content.querySelector(".profile__edit-button");
 const profileAddButton = content.querySelector(".profile__add-button");
 const buttonCloseImage = popupImage.querySelector(".popup__close");
-const popupEditClose = document.querySelector(".popup__close");
-const closeAddButton = document.querySelector(".popup__close_add");
+const buttonCloseEdit = document.querySelector(".popup__close");
+const buttonCloseAdd = document.querySelector(".popup__close");
 const profileTitle = content.querySelector(".profile__usermane");
 const profileSubtitle = content.querySelector(".profile__about");
 const formEdit = document.querySelector(".popup__form");
@@ -16,6 +16,20 @@ const jobInput = document.querySelector(".popup__input_type_job");
 const inputPhotoName = formAdd.querySelector('.popup__input_type_title');
 const inputPhotoLink = formAdd.querySelector('.popup__input_type_link');
 const elementContainer = document.querySelector('.elements');
+
+function openPopup(somePopup) {
+  somePopup.classList.add('popup_opened');
+}
+
+function profileInsert() {
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
+  openPopup(popupEdit);
+}
+
+function closePopup(somePopup) {
+  somePopup.classList.remove('popup_opened');
+}
 
 const createCard = (photoName, photoLink) => {
 
@@ -33,7 +47,7 @@ const createCard = (photoName, photoLink) => {
   });
   const image = element.querySelector('.element__img');
   image.addEventListener('click', () => {
-    openPopupImage();
+    openPopup(popupImage);
     popupImage.querySelector('.popup__caption').textContent = photoName;
     popupImage.querySelector('.popup__photo').src = photoLink;
   });
@@ -51,60 +65,25 @@ const addCard = (evt) => {
   renderCard(photoName, photoLink);
   inputPhotoName.reset = '';
   inputPhotoLink.value = '';
-  closePopupAdd();
-}
-
+  closePopup(popupAdd);
+};
 
 initialCards.forEach(function (initialCard) {
   renderCard(initialCard.name, initialCard.link);
 });
 
-function openPopupImage() {
-  popupImage.classList.add('popup_image_opened');
-};
-
-function openProfilePopup() {
-  popupEdit.classList.add("popup_opened");
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileSubtitle.textContent;
-}
-
-function openPopupAdd() {
-  popupAdd.classList.add('popup_add_opened');
-}
-
-function openPopupImage() {
-  popupImage.classList.add('popup_image_opened');
-};
-
-function handleFormSubmit(evt) {
+function formSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
-  closeProfilePopup();
+  closePopup(popupEdit);
 }
 
-function closePopupAdd() {
-  popupAdd.classList.remove('popup_add_opened');
-};
-
-function closePopupImage() {
-  popupImage.classList.remove('popup_image_opened');
-};
-
-function closeProfilePopup() {
-  popupEdit.classList.remove("popup_opened");
-}
-
-function closePopupImage() {
-  popupImage.classList.remove('popup_image_opened');
-};
-
-formEdit.addEventListener("submit", handleFormSubmit);
-profileEditButton.addEventListener("click", openProfilePopup);
-popupEditClose.addEventListener("click", closeProfilePopup);
-profileAddButton.addEventListener('click', openPopupAdd);
-closeAddButton.addEventListener('click', closePopupAdd);
-buttonCloseImage.addEventListener('click', closePopupImage);
+formEdit.addEventListener("submit", formSubmit);
+profileEditButton.addEventListener("click", () => profileInsert(popupEdit));
+profileAddButton.addEventListener('click', () => openPopup(popupAdd));
+buttonCloseEdit.addEventListener("click", () => closePopup(popupEdit));
+buttonCloseAdd.addEventListener('click', () => closePopup(popupAdd));
+buttonCloseImage.addEventListener('click', () => closePopup(popupImage));
 popupImage.addEventListener('click', popupImage);
 formAdd.addEventListener('submit', addCard);
