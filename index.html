@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
-    
+
 
 </head>
 
@@ -35,16 +35,17 @@
         <footer class="footer">
             <p class="footer__copyright">©&nbsp;2023 Mesto Russia</p>
         </footer>
-
         <div class="popup popup_edit">
             <div class="popup__wrapper">
                 <button class="popup__close" type="button"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form action="#" name="form" class="form popup__form">
                     <input type="text" name="username" placeholder="Имя" class="popup__input popup__input_type_username"
-                        required>
+                        required autocomplete="off" minlength="2" maxlength="40">
+                    <span class="popup__input-error" id="username-error"></span>
                     <input type="text" name="job" placeholder="О себе" class="popup__input popup__input_type_job"
-                        required>
+                        required autocomplete="off" minlength="2" maxlength="200">
+                    <span class="popup__input-error" id="job-error"></span>
                     <button type="submit" class="popup__form-submit">Сохранить</button>
                 </form>
             </div>
@@ -54,9 +55,12 @@
                 <button class="popup__close" type="button"></button>
                 <h3 class="popup__title">Новое место</h3>
                 <form action="#" name="form" class="form popup__form">
-                    <input type="text" name="title" class="popup__input popup__input_type_title" placeholder="Название">
-                    <input type="url" name="link" class="popup__input popup__input_type_link"
-                        placeholder="Ссылка на картинку">
+                    <input id="title" type="text" name="title" class="popup__input popup__input_type_title" placeholder="Название"
+                        required autocomplete="off" minlength="2" maxlength="30">
+                    <span class="popup__input-error" id="title-error"></span>
+                    <input id="link" type="url" name="link" class="popup__input popup__input_type_link"
+                        placeholder="Ссылка на картинку" required>
+                    <span class="popup__input-error" id="link-error"></span>
                     <button type="submit" class="popup__form-submit">Создать</button>
                 </form>
             </div>
@@ -82,6 +86,7 @@
 
     <script src="./scripts/constants.js"></script>
     <script src="./scripts/script.js" defer></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
