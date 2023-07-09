@@ -24,7 +24,7 @@ function closeByEscape(evt) {
   }
 }
 
-// close popup by click on popup overlay
+
 function closeByClickOverlay(evt) {
   if (evt.target === evt.currentTarget) {
     const openedPopup = document.querySelector('.popup_opened');
@@ -35,7 +35,7 @@ function closeByClickOverlay(evt) {
 function openPopup(somePopup) {
   somePopup.classList.add('popup_opened');
   window.addEventListener('keydown', closeByEscape);
-  // add click on popup overlay event listener
+
   somePopup.addEventListener('click', closeByClickOverlay);
 }
 
@@ -47,25 +47,25 @@ function profileInsert() {
 
 function closePopup(somePopup) {
   somePopup.classList.remove('popup_opened');
-  // remove esc button event listener
+
   window.removeEventListener('keydown', closeByEscape);
-  // remove click on popup overlay event listener
+
   somePopup.removeEventListener('click', closeByClickOverlay);
   if (!somePopup.classList.contains('popup_image')) {
     somePopup.querySelector('.popup__form').reset();
   };
-  // remove errors
+
   const errorList = Array.from(somePopup.querySelectorAll('.popup__input-error'));
   errorList.forEach((error) => error.textContent = '');
-  // remove error class for inputs
+
   const inputList = Array.from(somePopup.querySelectorAll('.popup__input'));
   inputList.forEach((input) => input.classList.remove('popup__form_error'));
-  // remove inactive class for edit button
+
   const buttonElement = somePopup.querySelector('.popup__form-submit');
   if (somePopup.classList.contains('popup_edit')) {
     buttonElement.classList.remove('popup__submit-button_inactive');
   }
-  // add inactive class for edit button
+
   else if (somePopup.classList.contains('popup_add')) {
     buttonElement.classList.add('popup__submit-button_inactive');
   };
@@ -117,13 +117,13 @@ initialCards.forEach(function (initialCard) {
   renderCard(initialCard.name, initialCard.link);
 });
 
-const formSubmit = (evt) => {
+const handleProfileFormSubmit = (evt) => {
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
   closePopup(popupEdit);
 };
 
-formEdit.addEventListener("submit", formSubmit);
+formEdit.addEventListener("submit", handleProfileFormSubmit);
 profileEditButton.addEventListener("click", () => profileInsert(popupEdit));
 profileAddButton.addEventListener('click', () => openPopup(popupAdd));
 buttonCloseEdit.addEventListener("click", () => closePopup(popupEdit));
