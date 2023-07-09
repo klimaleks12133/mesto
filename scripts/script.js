@@ -38,6 +38,7 @@ const createCard = (photoName, photoLink) => {
   const element = elementTemplate.querySelector('.element').cloneNode(true);
   element.querySelector('.element__title').textContent = photoName;
   element.querySelector('.element__img').src = photoLink;
+  element.alt = photoName;
   element.querySelector('.element__delete').addEventListener('click', () => {
     element.remove();
   });
@@ -50,6 +51,7 @@ const createCard = (photoName, photoLink) => {
     openPopup(popupImage);
     popupImage.querySelector('.popup__caption').textContent = photoName;
     popupImage.querySelector('.popup__photo').src = photoLink;
+    popupImage.alt = photoName;
   });
   return element;
 };
