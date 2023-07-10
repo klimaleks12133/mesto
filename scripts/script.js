@@ -19,6 +19,7 @@ const elementContainer = document.querySelector('.elements');
 const elementTemplate = document.querySelector('#element-template').content;
 const popupImageCaption = popupImage.querySelector('.popup__caption');
 const popupImagePhoto = popupImage.querySelector('.popup__photo');
+const cardFormSubmitButton = formAdd.querySelector('.popup__form-submit');
 
 function closeByEscape(evt) {
   if (evt.key === 'Escape') {
@@ -97,9 +98,8 @@ const addCard = (evt) => {
 };
 
 const disableSubmitAddPhoto = () => {
-  const submitButton = formAdd.querySelector('.popup__form-submit');
-  submitButton.classList.add('popup__submit-button_inactive');
-  submitButton.setAttribute('disabled', true);
+  cardFormSubmitButton.classList.add('popup__submit-button_inactive');
+  cardFormSubmitButton.setAttribute('disabled', true);
 };
 
 initialCards.forEach(function (initialCard) {
