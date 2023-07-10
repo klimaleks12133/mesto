@@ -6,9 +6,9 @@
     min-height: 19px;
     min-width: 22px;
     border: 0;
+    cursor: pointer;
 }
 
 .element__button.hover {
     opacity: .5;
-    cursor: pointer;
 }
