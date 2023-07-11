@@ -107,6 +107,7 @@ initialCards.forEach(function (initialCard) {
 });
 
 const handleProfileFormSubmit = (evt) => {
+  evt.preventDefault()
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
   closePopup(popupEdit);

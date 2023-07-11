@@ -44,13 +44,8 @@ const setEventListener = (formElement, config) => {
             toggleButtonState(inputList, buttonElement, config);
         });
     });
-
-
-    formElement.addEventListener("submit", (evt) => {
-        evt.preventDefault();
-        if (!formElement.checkValidity()) return;
-    });
 };
+
 function enableValidation(config) {
     const formsList = document.querySelectorAll(config.formSelector);
 
