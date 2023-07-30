@@ -16,7 +16,7 @@ const jobInput = document.querySelector(".popup__input_type_job");
 const inputPhotoName = formAdd.querySelector('.popup__input_type_title');
 const inputPhotoLink = formAdd.querySelector('.popup__input_type_link');
 const elementContainer = document.querySelector('.elements');
-const elementTemplate = document.querySelector('#element-template').content;
+const elementTemplate = document.querySelector('.element-template').content;
 const popupImageCaption = popupImage.querySelector('.popup__caption');
 const popupImagePhoto = popupImage.querySelector('.popup__photo');
 const cardFormSubmitButton = formAdd.querySelector('.popup__form-submit');
@@ -36,16 +36,15 @@ import { Card } from '../scripts/Card.js'
 import { FormValidator } from '../scripts/FormValidator.js';
 
 initialCards.forEach((item) => {
-  // Создадим экземпляр карточки
   const element = new Card(item.name, item.link, '.element-template');
-  // Создаём карточку и возвращаем наружу
   const cardElement = element.generateCard();
-  // Добавляем в DOM
   elementContainer.append(cardElement);
 });
 
-// const EditFormValidator = new FormValidator(config, '.element-template');
-// const AddFormValidator = new FormValidator(config, '.element-template);
+const EditFormValidator = new FormValidator(config, '.element-template');
+const AddFormValidator = new FormValidator(config, '.element-template');
+EditFormValidator.enableValidation();
+AddFormValidator.enableValidation();
 
 
 function closeByEscape(evt) {
