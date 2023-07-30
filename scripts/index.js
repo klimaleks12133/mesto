@@ -21,6 +21,63 @@ const popupImageCaption = popupImage.querySelector('.popup__caption');
 const popupImagePhoto = popupImage.querySelector('.popup__photo');
 const cardFormSubmitButton = formAdd.querySelector('.popup__form-submit');
 
+
+
+const initialCards = [
+  {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+
+  },
+  {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+
+  },
+  {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+
+  }
+];
+
+const config = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__form-submit',
+    inactiveButtonClass: 'popup__submit-button_inactive',
+    inputErrorClass: 'popup__input-error',
+};
+
+
+import { Card } from '../scripts/Card.js'
+import { FormValidator } from '../scripts/FormValidator.js';
+
+initialCards.forEach((item) => {
+  // Создадим экземпляр карточки
+  const element = new Card(item.name, item.link, '.element-template');
+  // Создаём карточку и возвращаем наружу
+  const cardElement = element.generateCard();
+  // Добавляем в DOM
+  elementContainer.append(cardElement);
+});
+
+// const EditFormValidator = new FormValidator(config, '.element-template');
+// const AddFormValidator = new FormValidator(config, '.element-template);
+
+
 function closeByEscape(evt) {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened');
@@ -55,6 +112,14 @@ function closePopup(somePopup) {
   window.removeEventListener('keydown', closeByEscape);
 
   somePopup.removeEventListener('click', closeByClickOverlay);
+}
+
+// // open image popup
+export function openImagePopup (photoName, photoLink) {
+  openPopup(popupImage);
+  popupImageCaption.textContent = photoName;
+  popupImagePhoto.src = photoLink;
+  popupImagePhoto.alt = photoName;
 }
 
 const createCard = (photoName, photoLink) => {
