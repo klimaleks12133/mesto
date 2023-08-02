@@ -97,7 +97,6 @@ function closePopup(somePopup) {
   somePopup.removeEventListener('click', closeByClickOverlay);
 }
 
-// // open image popup
 export function openImagePopup(photoName, photoLink) {
   openPopup(popupImage);
   popupImageCaption.textContent = photoName;
