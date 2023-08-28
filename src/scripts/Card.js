@@ -1,11 +1,9 @@
 import { openImagePopup } from '../pages/index.js'
 
 export class Card {
-    constructor(photoName, photoLink, elementSelector) {
-        this._photoName = photoName;
-        this._photoLink = photoLink;
+    constructor(elementSelector, handleCardClick) {
         this._elementSelector = elementSelector;
-        this._openImagePopup = openImagePopup;
+        this.handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -17,17 +15,22 @@ export class Card {
         return cardElement;
     }
 
-    _setEventListeners() {
-        this._element.querySelector('.element__delete').addEventListener('click', () => {
-            this._handleDeleteClick();
-        });
-        this._element.querySelector('.element__button').addEventListener('click', () => {
-            this._handleLikeClick();
-        });
-        this._element.querySelector('.element__img').addEventListener('click', () => {
-            this._handleImageClick(this._photoName, this._photoLink);
-        });
+    _getImage() {
+        const elementImage = this._element.querySelector('.element__img');
+        return elementImage;
     }
+
+    // _setEventListeners() {
+    //     this._element.querySelector('.element__delete').addEventListener('click', () => {
+    //         this._handleDeleteClick();
+    //     });
+    //     this._element.querySelector('.element__button').addEventListener('click', () => {
+    //         this._handleLikeClick();
+    //     });
+    //     this._element.querySelector('.element__img').addEventListener('click', () => {
+    //         this._handleImageClick(this._photoName, this._photoLink);
+    //     });
+    // }
 
     _handleDeleteClick() {
         this._element.remove();
@@ -36,18 +39,34 @@ export class Card {
 
     _handleLikeClick() {
         this._element.querySelector('.element__button').classList.toggle('element__button_active');
-      }
-
-    _handleImageClick() {
-        openImagePopup (this._photoName, this._photoLink)
     }
 
+    _setEventListeners() {
+        this._element.querySelector('.element__delete').addEventListener('click', () => {
+            this._handleDeleteClick();
+        });
+        this._element.querySelector('.element__button').addEventListener('click', () => {
+            this._handleLikeClick();
+        });
+        this._image.addEventListener('click', () => {
+            this._handleCardClick();
+        });
+    };
+};
+
+export class DefaultCards extends Card {
+    constructor(data, cardSelector, handleCardClick) {
+        super(cardSelector, handleCardClick);
+        this._name = data.name;
+        this._link = data.link;
+    };
+    
     generateCard() {
-        this._element = this._getTemplate();
-        this._setEventListeners();
+        this._element = super._getTemplate();
+        super._setEventListeners();
         this._element.querySelector('.element__img').src = this._photoLink;
         this._element.querySelector('.element__img').alt = this._photoName;
         this._element.querySelector('.element__title').textContent = this._photoName;
         return this._element;
-    }
-}
+    };
+};
