@@ -21,6 +21,7 @@ const popupImageCaption = popupImage.querySelector('.popup__caption');
 const popupImagePhoto = popupImage.querySelector('.popup__photo');
 //const cardFormSubmitButton = formAdd.querySelector('.popup__form-submit');
 
+import './index.css'
 import { initialCards } from '../scripts/initialCards.js';
 import { Card } from '../scripts/Card.js'
 import { FormValidator } from '../scripts/FormValidator.js';

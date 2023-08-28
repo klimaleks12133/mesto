@@ -1,0 +1,31 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "**Курс \"Вэб-разработка\"**\r *Проектная работа №4-№7*\r ### [Ссылка на проект](https://klimaleks12133.github.io/mesto/)\r ## Cайт с фотографиями\r Сайт создан для публикации фото.\r #### Технологии\r + HTML5\r + CCS3\r + JavaScript\r + БЭМ\r + Flexbox\r + GRID\r #### Планы по доработке сайта\r Добавить английскую версию сайта",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist && webpack --mode production --env production",
+    "dev": "webpack serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.22.11",
+    "@babel/preset-env": "^7.22.10",
+    "autoprefixer": "^10.4.15",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^6.8.1",
+    "cssnano": "^6.0.1",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss-loader": "^7.3.3",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "core-js": "^3.32.1",
+    "rimraf": "^5.0.1"
+  }
+}
