@@ -7,7 +7,6 @@ export class PopupWithImage extends Popup {
     };
 
     open(data) {
-      // data = initialCards
         super.open();
         this._image.src = data.link;
         this._title.textContent = data.name;
