@@ -2,7 +2,7 @@ import {
   initialCards,
   config,
   // popupEdit,
-  // popupAdd,
+  popupAdd,
   profileEditButton,
   profileAddButton,
   buttonCloseImage,

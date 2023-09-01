@@ -3,7 +3,7 @@ export class Card {
         this._elementSelector = elementSelector;
         this._handleCardClick = handleCardClick;
         this._name = data.name;
-        this._link = data.link
+        this._link = data.link;
     };
 
     _getTemplate() {
@@ -23,7 +23,6 @@ export class Card {
     _handleDeleteClick() {
         this._element.remove();
         this._element = null;
-        
     }
 
     _handleLikeClick() {
