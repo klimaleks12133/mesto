@@ -54,7 +54,7 @@ formValidatorEdit.enableValidation();
 const formValidatorAdd = new FormValidator(config, formAdd);
 formValidatorAdd.enableValidation();
 
-const userInfo = new UserInfo('.profileTitle', '.profileSubtitle');
+const userInfo = new UserInfo('.profile__title', '.profile__about');
 
 const popupEditProfile = new PopupWithForm({
   popupSelector: '.popup_edit',

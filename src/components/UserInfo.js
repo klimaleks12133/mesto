@@ -5,11 +5,11 @@ export class UserInfo {
   };
 
   getUserInfo() {
-    const userInfo = {
+    this._userInfo = {
       profileNameInput: this._profileTitle.textContent,
       profileInfoInput: this._profileSubtitle.textContent
     }
-    return userInfo
+    return this._userInfo;
   };
 
   setUserInfo(name, position) {
