@@ -54,7 +54,12 @@ formValidatorEdit.enableValidation();
 const formValidatorAdd = new FormValidator(config, formAdd);
 formValidatorAdd.enableValidation();
 
-const userInfo = new UserInfo('.profile__title', '.profile__about');
+// const userInfo = new UserInfo('.profile__usermane', '.profile__about');
+
+const userInfo = new UserInfo({
+  profileNameSelector: ".profile__usermane",
+  profilePositionSelector: ".profile__about",
+});
 
 const popupEditProfile = new PopupWithForm({
   popupSelector: '.popup_edit',
@@ -74,12 +79,14 @@ const popupAddCard = new PopupWithForm({
 });
 popupAddCard.setEventListeners();
 
-profileEditButton.addEventListener('click', () => {
-  profileTitle.value = userInfo.getUserInfo().profileNameInput;
-  profileSubtitle.value = userInfo.getUserInfo().profileInfoInput;
+const editProfile = () => {
+  nameInput.value = userInfo.getUserInfo().name;
+  jobInput.value = userInfo.getUserInfo().about;
   popupEditProfile.open();
   formValidatorEdit.resetValidation();
-});
+};
+
+profileEditButton.addEventListener('click', editProfile);
 
 profileAddButton.addEventListener('click', () => {
   popupAddCard.open();
