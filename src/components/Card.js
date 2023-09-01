@@ -14,7 +14,7 @@ export class Card {
             .cloneNode(true);
         return cardElement;
     }
-    
+
     _getImage() {
         const elementImage = this._element.querySelector('.element__img');
         return elementImage;
@@ -35,7 +35,7 @@ export class Card {
         });
         this._element.querySelector('.element__button').addEventListener('click', () => {
             this._handleLikeClick();
-            
+
         });
         this._image.addEventListener("click", () => {
             this._handleCardClick(this._name, this._link);

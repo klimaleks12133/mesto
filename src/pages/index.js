@@ -2,22 +2,22 @@ import {
   initialCards,
   config,
   // popupEdit,
-  popupAdd,
+  //popupAdd,
   profileEditButton,
   profileAddButton,
-  buttonCloseImage,
-  buttonCloseEdit,
-  buttonCloseAdd,
-  profileTitle,
-  profileSubtitle,
+  // buttonCloseImage,
+  // buttonCloseEdit,
+  // buttonCloseAdd,
+  // profileTitle,
+  // profileSubtitle,
   formEdit,
   formAdd,
   nameInput,
   jobInput,
-  inputPhotoName,
-  inputPhotoLink,
+  // inputPhotoName,
+  // inputPhotoLink,
   // popupImage,
-  elementContainer,
+  // elementContainer,
 } from '../utils/constants.js'
 
 import './index.css'
@@ -64,7 +64,7 @@ const userInfo = new UserInfo({
 const popupEditProfile = new PopupWithForm({
   popupSelector: '.popup_edit',
   handleFormSubmit: (formData) => {
-    userInfo.setUserInfo(formData.name, formData.position);
+    userInfo.setUserInfo(formData.name, formData.about);
     popupEditProfile.close()
   }
 });
@@ -73,7 +73,7 @@ popupEditProfile.setEventListeners();
 const popupAddCard = new PopupWithForm({
   popupSelector: '.popup_add',
   handleFormSubmit: (formData) => {
-    cardList.addItem(createCard({ name: formData.place, link: formData.link }));
+    cardList.addItem(createCard({ name: formData.title, link: formData.link }));
     popupAddCard.close();
   }
 });
