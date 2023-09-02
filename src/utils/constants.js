@@ -27,12 +27,14 @@ export const initialCards = [
 
     }
 ];
+const popupAvatar = document.querySelector('.popup_avatar');
+const popupEdit = document.querySelector(".popup_edit");
+const popupAdd = document.querySelector(".popup_add");
+
 export const popupImage = document.querySelector('.popup_image');
 export const popupImageCaption = popupImage.querySelector('.popup__caption');
 export const popupImagePhoto = popupImage.querySelector('.popup__photo');
 export const content = document.querySelector(".content");
-export const popupEdit = document.querySelector(".popup_edit");
-export const popupAdd = document.querySelector(".popup_add");
 export const profileEditButton = content.querySelector(".profile__edit-button");
 export const profileAddButton = content.querySelector(".profile__add-button");
 export const buttonCloseImage = popupImage.querySelector(".popup__close");
@@ -48,8 +50,11 @@ export const inputPhotoName = formAdd.querySelector('.popup__input_type_title');
 export const inputPhotoLink = formAdd.querySelector('.popup__input_type_link');
 export const elementContainer = document.querySelector('.elements');
 export const buttonAvatar = document.querySelector('.profile__avatar-edit-button');
-export const popupAvatar = document.querySelector('.popup_avatar');
-export const avatarSave = popupAvatar.querySelector(".popup__form-submit");
+export const profileAvatar = document.querySelector('.profile__avatar');
+export const popupAddSubmit = popupAdd.querySelector('.popup__form-submit');
+export const popupAvatarSubmit = popupAvatar.querySelector(".popup__form-submit");
+export const formAvatar = popupAvatar.querySelector('.popup__form');
+export const popupEditSubmit = popupEdit.querySelector('.popup__form-submit');
 
 export const config = {
     formSelector: '.popup__form',

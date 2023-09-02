@@ -4,16 +4,16 @@ export class PopupWithConfirmation extends Popup {
         super(popupSelector);
     };
 
-    handler(handleDeleteCard) {
+    handleConfirm(handleDeleteCard) {
         this._handleDeleteCard = handleDeleteCard;
     }
 
     setEventListeners() {
         super.setEventListeners()
-        this._popupSelector.addEventListener('submit', (evt) => {
+        this._popupElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
             this._handleDeleteCard()
-            this.closePopup()
+            this.close()
         });
     }
 };
