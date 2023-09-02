@@ -9,6 +9,7 @@
     top: 20px;
     right: 20px;
     cursor: pointer;
+    background-repeat: no-repeat;
 }
 
 .element__delete:hover {

@@ -47,6 +47,9 @@ export const jobInput = document.querySelector(".popup__input_type_job");
 export const inputPhotoName = formAdd.querySelector('.popup__input_type_title');
 export const inputPhotoLink = formAdd.querySelector('.popup__input_type_link');
 export const elementContainer = document.querySelector('.elements');
+export const buttonAvatar = document.querySelector('.profile__avatar-edit-button');
+export const popupAvatar = document.querySelector('.popup_avatar');
+export const avatarSave = popupAvatar.querySelector(".popup__form-submit");
 
 export const config = {
     formSelector: '.popup__form',
