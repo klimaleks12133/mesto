@@ -1,50 +1,34 @@
 import {
   config,
-  // popupEdit,
-  //popupAdd,
   profileEditButton,
   profileAddButton,
-  // buttonCloseImage,
-  // buttonCloseEdit,
-  // buttonCloseAdd,
-  // profileTitle,
-  // profileSubtitle,
   formEdit,
   formAdd,
-  buttonAvatar,
-  popupAvatar,
-  formAvatar,
   nameInput,
   jobInput,
   popupAddSubmit,
   popupEditSubmit,
-  popupAvatarSubmit,
-  // inputPhotoName,
-  // inputPhotoLink,
-  // popupImage,
-  // elementContainer,
+  buttonAvatar,
+  avatarSave,
+  formAvatar,
+  profileTitle,
+  profileSubtitle,
+  profileAvatar
 } from '../utils/constants.js'
-import { myId } from "../utils/myId.js";
+
 import './index.css'
+import { myId } from "../utils/myId.js";
 import { Card } from '../components/Card.js'
-import { FormValidator } from '../components/FormValidator.js'
+import { FormValidator } from '../components/FormValidator.js';
 import { UserInfo } from '../components/UserInfo.js'
 import { PopupWithForm } from '../components/PopupWithForm.js'
 import { PopupWithImage } from '../components/PopupWithImage.js'
 import { Section } from '../components/Section.js'
-import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js'
-import { Api } from '../components/Api.js'
-
-function showLoading(isLoading, button, defaultText) {
-  if (isLoading) {
-      button.textContent = "Сохранение..."
-  } else {
-      button.textContent = defaultText
-  }
-};
+import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js';
+import { Api } from '../components/Api.js';
 
 function createCard(item) {
-   const card = new Card(item, '.card-template', like, dislike,
+  const card = new Card(item, '.element-template', like, dislike, currentId,
     () => {
       confirmPopup.open();
       confirmPopup.handleConfirm(() =>
@@ -60,6 +44,7 @@ function createCard(item) {
   return cardElement;
 };
 
+
 const cardList = new Section({
   renderer: (item) => {
     cardList.addItem(createCard(item));
@@ -67,10 +52,9 @@ const cardList = new Section({
 },
   '.elements');
 
-const userInfo = new UserInfo();
+const userInfo = new UserInfo(profileTitle, profileSubtitle, profileAvatar);
 
 const api = new Api(myId);
-
 api.getUserInfo()
   .then((data) => {
     userInfo.setUserAvatar(data.avatar)
@@ -93,7 +77,6 @@ const dislike = id => api.dislike(id);
 
 const formValidatorEdit = new FormValidator(config, formEdit);
 formValidatorEdit.enableValidation();
-
 const formValidatorAdd = new FormValidator(config, formAdd);
 formValidatorAdd.enableValidation();
 
@@ -102,19 +85,24 @@ avatarFormValidator.enableValidation();
 
 const imagePopup = new PopupWithImage('.popup_image');
 imagePopup.setEventListeners();
-// const userInfo = new UserInfo({
-//   profileNameSelector: ".profile__usermane",
-//   profilePositionSelector: ".profile__about",
-// });
 
 ///////////////////////////////////////////////////////////////////////////////
+
 const confirmPopup = new PopupWithConfirmation('.popup_confirm');
 confirmPopup.setEventListeners();
 
+function showLoading(isLoading, button, defaultText) {
+  if (isLoading) {
+    button.textContent = "Сохранение..."
+  } else {
+    button.textContent = defaultText
+  }
+};
+
 const newAvatar = new PopupWithForm({
-  popupSelector: '.popup_avatar',
+  popupSelector: '.popup_type_avatar',
   handleFormSubmit: (formData) => {
-    showLoading(true, popupAvatarSubmit)
+    showLoading(true, avatarSave)
     api.addNewAvatar(formData.link)
       .then((link) => {
         userInfo.setUserAvatar(link.avatar)
@@ -122,19 +110,20 @@ const newAvatar = new PopupWithForm({
       })
       .catch((err) => console.log(err))
       .finally(() => {
-        showLoading(false, popupAvatarSubmit, "Сохранить")
+        showLoading(false, avatarSave, "Сохранить")
       });
   }
 })
 newAvatar.setEventListeners();
-
 ////////////////////////////////////////////////////////////////////////////////
 
 const popupEditProfile = new PopupWithForm({
   popupSelector: '.popup_edit',
   handleFormSubmit: (formData) => {
+    // userInfo.setUserInfo({ name: formData.name, about: formData.about });
+    // popupEditProfile.close()
     showLoading(true, popupEditSubmit)
-    api.setUserInfo(formData.name, formData.about)
+    api.setUserInfo(formData.name, formData.info)
       .then(() => {
         userInfo.setUserInfo(formData.name, formData.about);
         newProfile.close();
@@ -145,17 +134,20 @@ const popupEditProfile = new PopupWithForm({
       });
   }
 });
-
 popupEditProfile.setEventListeners();
+
+
 
 const popupAddCard = new PopupWithForm({
   popupSelector: '.popup_add',
   handleFormSubmit: (formData) => {
+    // cardList.addItem(createCard({ name: formData.title, link: formData.link }));
+    // popupAddCard.close();
     showLoading(true, popupAddSubmit)
     api.addNewCard(formData.name, formData.link)
       .then((data) => {
         cardList.addItem(createCard(data))
-        newCard.close();
+        popupAddCard.close();
       })
       .catch((err) => console.log(err))
       .finally(() => {
@@ -179,7 +171,8 @@ profileAddButton.addEventListener('click', () => {
   formValidatorAdd.resetValidation(popupAddSubmit);
 });
 
+// edit avatar listener
 buttonAvatar.addEventListener('click', () => {
   newAvatar.open();
-  avatarFormValidator.resetValidation(popupAvatarSubmit)
+  avatarFormValidator.resetValidation(avatarSave);
 });

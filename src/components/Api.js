@@ -8,7 +8,7 @@ export class Api {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject('Ошибка')
+      return Promise.reject('Ошибка')
   };
 
   getUserInfo() {
@@ -16,7 +16,7 @@ export class Api {
       method: "GET",
       headers: this.headers
     })
-      .then(this._handleResponse)
+    .then(this._handleResponse)
   };
 
   getInitialCard() {
@@ -24,7 +24,7 @@ export class Api {
       method: "GET",
       headers: this.headers
     })
-      .then(this._handleResponse)
+    .then(this._handleResponse)
   };
 
   setUserInfo(name, about) {
@@ -36,7 +36,7 @@ export class Api {
         about: `${about}`
       })
     })
-      .then(this._handleResponse)
+    .then(this._handleResponse)
   };
 
   addNewCard(name, link) {
@@ -48,7 +48,7 @@ export class Api {
         link: `${link}`
       })
     })
-      .then(this._handleResponse)
+    .then(this._handleResponse)
   };
 
   addNewAvatar(link) {
@@ -59,7 +59,7 @@ export class Api {
         avatar: `${link}`
       })
     })
-      .then(this._handleResponse)
+    .then(this._handleResponse)
   };
 
   deleteCard(id) {
@@ -70,7 +70,7 @@ export class Api {
         _id: `${id}`
       })
     })
-      .then(this._handleResponse)
+    .then(this._handleResponse)
   };
 
   like(id) {
@@ -81,7 +81,7 @@ export class Api {
         _id: `${id}`
       })
     })
-      .then(this._handleResponse)
+    .then(this._handleResponse)
   };
 
   dislike(id) {
@@ -92,6 +92,6 @@ export class Api {
         _id: `${id}`
       })
     })
-      .then(this._handleResponse)
+    .then(this._handleResponse)
   };
 }

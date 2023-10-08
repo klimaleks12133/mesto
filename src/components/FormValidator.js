@@ -11,7 +11,7 @@ export class FormValidator {
         errorElement.textContent = inputElement.validationMessage;;
     };
 
-    _hideInputError(inputElement) {
+    _hideInputError(inputElement)  {
         const errorElement = document.getElementById(`${inputElement.id}-error`);
         inputElement.classList.remove(this._config.inputErrorClass);
         errorElement.textContent = '';

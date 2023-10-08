@@ -1,23 +1,22 @@
-import { profileTitle, profileSubtitle, profileAvatar } from '../utils/constants.js';
-
 export class UserInfo {
-  // constructor({profileNameSelector, profilePositionSelector}) {
-  //   this.profileTitle = document.querySelector(profileNameSelector);
-  //   this.profileSubtitle = document.querySelector(profilePositionSelector);
-  // }
+  constructor({ profileTitle, profileSubtitle, profileAvatar }) {
+    this._profileTitle = profileTitle;
+    this._profileSubtitle = profileSubtitle;
+    this._profileAvatar = profileAvatar
+  }
 
   getUserInfo() {
     return {
-      name: profileTitle.textContent,
-      about: profileSubtitle.textContent,
+      name: this._profileTitle.textContent,
+      about: this._profileSubtitle.textContent,
     };
   }
 
   setUserInfo({ name, about }) {
-    profileTitle.textContent = name;
-    profileSubtitle.textContent = about;
-  }
+    this._profileTitle.textContent = name;
+    this._profileSubtitle.textContent = about;
+  };
   setUserAvatar(link) {
-    profileAvatar.src = link
-  }
+    this._profileAvatar.src = link
+  };
 };

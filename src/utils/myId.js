@@ -1,7 +1,7 @@
 export const myId = {
-    link: 'https://mesto.nomoreparties.co/v1/cohort-73',
+    link: 'https://mesto.nomoreparties.co/v1/cohort-77',
     headers: {
-        authorization: 'a9cff2df-2ead-4439-bf99-b2c92a9455d6',
+        authorization: '05c13ead-6e75-4656-a1c4-967b5549f33b',
         'Content-Type': 'application/json'
     }
   }
