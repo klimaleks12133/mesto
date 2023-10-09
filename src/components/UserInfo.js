@@ -6,17 +6,18 @@ export class UserInfo {
   }
 
   getUserInfo() {
-    return {
+    const userInfo = {
       name: this._profileTitle.textContent,
-      about: this._profileSubtitle.textContent,
-    };
-  }
+      about: this._profileSubtitle.textContent
+    }
+    return userInfo
+  };
 
-  setUserInfo({ name, about }) {
+  setUserInfo( name, about ) {
     this._profileTitle.textContent = name;
     this._profileSubtitle.textContent = about;
   };
   setUserAvatar(link) {
-    this._profileAvatar.src = link
+    this._profileAvatar.src = link;
   };
 };

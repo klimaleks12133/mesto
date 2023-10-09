@@ -33,6 +33,7 @@ export const popupImagePhoto = popupImage.querySelector('.popup__photo');
 export const content = document.querySelector(".content");
 export const popupEdit = document.querySelector(".popup_edit");
 export const popupAdd = document.querySelector(".popup_add");
+export const popupConfirm = document.querySelector('.popup_confirm');
 export const profileEditButton = content.querySelector(".profile__edit-button");
 export const profileAddButton = content.querySelector(".profile__add-button");
 export const buttonCloseImage = popupImage.querySelector(".popup__close");
@@ -54,6 +55,7 @@ export const avatarSave = popupAvatar.querySelector(".popup__form-submit");
 export const profileAvatar = document.querySelector('.profile__avatar');
 export const popupAddSubmit = popupAdd.querySelector('.popup__form-submit');
 export const popupEditSubmit = popupEdit.querySelector('.popup__form-submit');
+export const popupConfirmSubmit = popupConfirm.querySelector('.popup__form-submit');
 
 export const config = {
     formSelector: '.popup__form',

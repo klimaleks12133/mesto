@@ -13,7 +13,8 @@ import {
   formAvatar,
   profileTitle,
   profileSubtitle,
-  profileAvatar
+  profileAvatar,
+  popupConfirmSubmit,
 } from '../utils/constants.js'
 
 import './index.css'
@@ -27,14 +28,28 @@ import { Section } from '../components/Section.js'
 import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js';
 import { Api } from '../components/Api.js';
 
+function showLoading(isLoading, button, defaultText) {
+  if (isLoading) {
+    button.textContent = "Сохранение..."
+  } else {
+    button.textContent = defaultText
+  }
+};
+
 function createCard(item) {
-  const card = new Card(item, '.element-template', like, dislike, currentId,
+  const card = new Card(item, '.element-template', like, dislike, 
     () => {
       confirmPopup.open();
-      confirmPopup.handleConfirm(() =>
+      confirmPopup.handleConfirm(() => {
+        showLoading(true, popupConfirmSubmit)
         api.deleteCard(item._id)
           .then(() => card.deleteCard())
-          .catch(err => console.log(err)))
+          .then(confirmPopup.close.bind(confirmPopup))
+          .catch(err => console.log(err))
+          .finally(() => {
+            showLoading(false, popupConfirmSubmit, "Да")
+          })
+      })
     },
     () => {
       imagePopup.open({ name: item.name, link: item.link });
@@ -55,28 +70,24 @@ const cardList = new Section({
 const userInfo = new UserInfo(profileTitle, profileSubtitle, profileAvatar);
 
 const api = new Api(myId);
-api.getUserInfo()
-  .then((data) => {
-    userInfo.setUserAvatar(data.avatar)
+Promise.all([api.getUserInfo(), api.getInitialCard()])
+  .then(([data, cards]) => {
+    // console.log(data);
+    userInfo.setUserAvatar(data.avatar);
     userInfo.setUserInfo(data.name, data.about);
+    cardList.renderItems(cards.reverse());
   })
-  .catch((err) =>
-    console.log(err)
-  );
+  .catch(err => {
+    console.log(err);
+  });
 
-api.getInitialCard()
-  .then((items) => {
-    cardList.renderItems(items.reverse());
-  })
-  .catch((err) =>
-    console.log(err)
-  );
 
 const like = id => api.like(id);
 const dislike = id => api.dislike(id);
 
 const formValidatorEdit = new FormValidator(config, formEdit);
 formValidatorEdit.enableValidation();
+
 const formValidatorAdd = new FormValidator(config, formAdd);
 formValidatorAdd.enableValidation();
 
@@ -86,21 +97,11 @@ avatarFormValidator.enableValidation();
 const imagePopup = new PopupWithImage('.popup_image');
 imagePopup.setEventListeners();
 
-///////////////////////////////////////////////////////////////////////////////
-
 const confirmPopup = new PopupWithConfirmation('.popup_confirm');
 confirmPopup.setEventListeners();
 
-function showLoading(isLoading, button, defaultText) {
-  if (isLoading) {
-    button.textContent = "Сохранение..."
-  } else {
-    button.textContent = defaultText
-  }
-};
-
 const newAvatar = new PopupWithForm({
-  popupSelector: '.popup_type_avatar',
+  popupSelector: '.popup_avatar',
   handleFormSubmit: (formData) => {
     showLoading(true, avatarSave)
     api.addNewAvatar(formData.link)
@@ -126,7 +127,7 @@ const popupEditProfile = new PopupWithForm({
     api.setUserInfo(formData.name, formData.info)
       .then(() => {
         userInfo.setUserInfo(formData.name, formData.about);
-        newProfile.close();
+        popupEditProfile.close();
       })
       .catch((err) => console.log(err))
       .finally(() => {
