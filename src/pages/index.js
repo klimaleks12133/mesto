@@ -67,7 +67,13 @@ const cardList = new Section({
 },
   '.elements');
 
-const userInfo = new UserInfo(profileTitle, profileSubtitle, profileAvatar);
+// const userInfo = new UserInfo(profileTitle, profileSubtitle, profileAvatar);
+
+const userInfo = new UserInfo({
+  profileNameSelector: ".profile__usermane",
+  profilePositionSelector: ".profile__about",
+  profileAvatarSelector: ".profile__avatar",
+});
 
 const api = new Api(myId);
 Promise.all([api.getUserInfo(), api.getInitialCard()])
@@ -131,7 +137,7 @@ const popupEditProfile = new PopupWithForm({
       })
       .catch((err) => console.log(err))
       .finally(() => {
-        renderLoading(false, popupEditSubmit, "Сохранить")
+        showLoading(false, popupEditSubmit, "Сохранить")
       });
   }
 });

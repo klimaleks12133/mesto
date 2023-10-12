@@ -1,12 +1,12 @@
 export class Card {
-    constructor(data, elementSelector, like, dislike, currentId, handleCardClick, handleDeleteClick) {
+    constructor(data, elementSelector, like, dislike, handleCardClick, handleDeleteClick) {
         this._data = data;
         this._elementSelector = elementSelector;
         this._like = like;
         this._dislike = dislike;
-        this._userId = currentId;
-        this._handleCardClick = handleCardClick;
+        // this._userId = currentId;
         this._handleDeleteClick = handleDeleteClick;
+        this._handleCardClick = handleCardClick;
         this._name = data.name;
         this._link = data.link;
     };
@@ -36,7 +36,7 @@ export class Card {
     };
 
     _getLikesCounter() {
-        const likesCounter = this._element.querySelector('.card__likes-amount');
+        const likesCounter = this._element.querySelector('.element__button-amount');
         return likesCounter;
     };
 
