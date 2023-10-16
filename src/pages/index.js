@@ -149,10 +149,8 @@ popupEditProfile.setEventListeners();
 const popupAddCard = new PopupWithForm({
   popupSelector: '.popup_add',
   handleFormSubmit: (formData) => {
-    // cardList.addItem(createCard({ name: formData.title, link: formData.link }));
-    // popupAddCard.close();
     showLoading(true, popupAddSubmit)
-    api.addNewCard(formData.name, formData.link)
+    api.addNewCard(formData.title, formData.link)
       .then((data) => {
         cardList.addItem(createCard(data))
         popupAddCard.close();
