@@ -1,11 +1,7 @@
 .element__button-amount {
-    margin: 0;
     padding: 0;
     border: 0;
     background: 0;
-    /* margin-top: 30px; */
-    margin-bottom: 22px;
-    margin-right: 16px;
     text-align: center;
     font-weight: 400;
     font-size: 13px;
@@ -13,4 +9,5 @@
     color: #000;
     width: 30px;
     height: 13px;
+    margin: 0px 13px 22px 13px;
 }

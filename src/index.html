@@ -15,9 +15,10 @@
         <main class="content">
             <section class="profile">
                 <div class="profile__avatar-page">
-                    <button type="button" class="profile__avatar-edit-button" aria-label="Кнопка изменения аватара"></button>
+                    <button type="button" class="profile__avatar-edit-button"
+                        aria-label="Кнопка изменения аватара"></button>
                     <img class="profile__avatar" src="<%=require('./image/image.jpg')%>" alt="Аватарка">
-                  </div>
+                </div>
                 <div class="profile__info">
                     <div class="profile__title">
                         <h1 class="profile__usermane">Жак-Ив Кусто</h1>
@@ -35,7 +36,7 @@
         </footer>
         <div class="popup popup_edit">
             <div class="popup__wrapper">
-                <button class="popup__close" type="button"></button>
+                <button type="button" class="popup__close"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form action="#" name="form" class="form popup__form" novalidate>
                     <input id="username" type="text" name="name" placeholder="Имя"
@@ -87,7 +88,7 @@
                 <button type="button" class="popup__close" aria-label="Кнопка закрытия окна изменения аватара"></button>
                 <h2 class="popup__title">Обновить аватар</h2>
                 <form class="form popup__form" name="avatar-form" action="#" method="get">
-                    <input id="avatar-linkr" type="url" name="link" class="popup__input popup__input_value_link"
+                    <input id="avatar-link" type="url" name="link" class="popup__input popup__input_value_link"
                         autocomplete="off" required value="" placeholder="Ссылка на картинку" />
                     <span id="avatar-link-error" class="popup__input-error"></span>
                     <button type="submit" class="popup__form-submit" aria-label="Кнопка сохранения нового аватара">

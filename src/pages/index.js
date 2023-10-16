@@ -15,6 +15,7 @@ import {
   profileSubtitle,
   profileAvatar,
   popupConfirmSubmit,
+  currentId,
 } from '../utils/constants.js'
 
 import './index.css'
@@ -37,7 +38,7 @@ function showLoading(isLoading, button, defaultText) {
 };
 
 function createCard(item) {
-  const card = new Card(item, '.element-template', like, dislike, 
+  const card = new Card(item, '.element-template', like, dislike, currentId,
     () => {
       confirmPopup.open();
       confirmPopup.handleConfirm(() => {
@@ -130,7 +131,7 @@ const popupEditProfile = new PopupWithForm({
     // userInfo.setUserInfo({ name: formData.name, about: formData.about });
     // popupEditProfile.close()
     showLoading(true, popupEditSubmit)
-    api.setUserInfo(formData.name, formData.info)
+    api.setUserInfo(formData.name, formData.about)
       .then(() => {
         userInfo.setUserInfo(formData.name, formData.about);
         popupEditProfile.close();

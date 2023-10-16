@@ -2,7 +2,6 @@ import { Popup } from './Popup.js';
 export class PopupWithConfirmation extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
-
   };
 
   handleConfirm(handleDeleteCard) {
@@ -14,7 +13,6 @@ export class PopupWithConfirmation extends Popup {
     this._popupElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._handleDeleteCard()
-      this.close()
     });
   }
 };

@@ -2,6 +2,6 @@
     display: flex;
     justify-content: space-between;
     text-align: center;
-    padding: 22px 22px 22px 22px;
+    padding: 22px 0 0 22px;
     overflow: hidden;
 }
