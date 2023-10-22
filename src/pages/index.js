@@ -88,15 +88,6 @@ Promise.all([api.getUserInfo(), api.getInitialCard()])
 
 let userId;
 
-// const togleLike = (card, set) => {
-//   api.togleLike(card._data._id, set)
-//     .then((result) => {
-//       card.setLikes(result)
-//     })
-//     .catch((err) => {
-//       console.log(`Ошибка: ${err}`)
-//     })
-// };
 
 const like = id => api.like(id);
 const dislike = id => api.dislike(id);
