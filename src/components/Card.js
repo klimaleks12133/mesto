@@ -7,7 +7,6 @@ export class Card {
         this._userId = userId;
         this._handleDeleteClick = handleDeleteClick;
         this._handleCardClick = handleCardClick;
-        // this._id = id;
     };
 
     _getTemplate() {
