@@ -4,4 +4,4 @@ export const myId = {
         authorization: '05c13ead-6e75-4656-a1c4-967b5549f33b',
         'Content-Type': 'application/json'
     }
-  }
+}

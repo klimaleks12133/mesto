@@ -55,7 +55,6 @@ export const inputPhotoLink = formAdd.querySelector('.popup__input_type_link');
 export const elementContainer = document.querySelector('.elements');
 export const buttonAvatar = document.querySelector('.profile__avatar-edit-button');
 export const formAvatar = popupAvatar.querySelector('.popup__form');
-export const currentId = '652d1ad1ef33e511db3d76c1';
 export const avatarSave = popupAvatar.querySelector('.popup__form-submit');
 export const profileAvatar = document.querySelector('.profile__avatar');
 export const popupAddSubmit = popupAdd.querySelector('.popup__form-submit');

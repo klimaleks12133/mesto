@@ -15,7 +15,7 @@ import {
   profileSubtitle,
   profileAvatar,
   popupConfirmSubmit,
-  currentId,
+
 } from '../utils/constants.js'
 
 import './index.css'
@@ -38,7 +38,7 @@ function showLoading(isLoading, button, defaultText) {
 };
 
 function createCard(item) {
-  const card = new Card(item, '.element-template', like, dislike, currentId,
+  const card = new Card(item, '.element-template', like, dislike, 
     () => {
       confirmPopup.open();
       confirmPopup.handleConfirm(() => {
@@ -68,8 +68,6 @@ const cardList = new Section({
 },
   '.elements');
 
-// const userInfo = new UserInfo(profileTitle, profileSubtitle, profileAvatar);
-
 const userInfo = new UserInfo({
   profileNameSelector: ".profile__usermane",
   profilePositionSelector: ".profile__about",
@@ -79,15 +77,26 @@ const userInfo = new UserInfo({
 const api = new Api(myId);
 Promise.all([api.getUserInfo(), api.getInitialCard()])
   .then(([data, cards]) => {
-    // console.log(data);
     userInfo.setUserAvatar(data.avatar);
     userInfo.setUserInfo(data.name, data.about);
     cardList.renderItems(cards.reverse());
+    userId = data._id;
   })
   .catch(err => {
     console.log(err);
   });
 
+let userId;
+
+// const togleLike = (card, set) => {
+//   api.togleLike(card._data._id, set)
+//     .then((result) => {
+//       card.setLikes(result)
+//     })
+//     .catch((err) => {
+//       console.log(`Ошибка: ${err}`)
+//     })
+// };
 
 const like = id => api.like(id);
 const dislike = id => api.dislike(id);
@@ -123,13 +132,11 @@ const newAvatar = new PopupWithForm({
   }
 })
 newAvatar.setEventListeners();
-////////////////////////////////////////////////////////////////////////////////
+
 
 const popupEditProfile = new PopupWithForm({
   popupSelector: '.popup_edit',
   handleFormSubmit: (formData) => {
-    // userInfo.setUserInfo({ name: formData.name, about: formData.about });
-    // popupEditProfile.close()
     showLoading(true, popupEditSubmit)
     api.setUserInfo(formData.name, formData.about)
       .then(() => {

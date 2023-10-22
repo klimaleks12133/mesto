@@ -1,12 +1,13 @@
 export class Card {
-    constructor(data, elementSelector, like, dislike, currentId, handleCardClick, handleDeleteClick) {
+    constructor(data, elementSelector, like, dislike, userId, handleCardClick, handleDeleteClick) {
         this._data = data;
         this._elementSelector = elementSelector;
         this._like = like;
         this._dislike = dislike;
-        this._userId = currentId;
+        this._userId = userId;
         this._handleDeleteClick = handleDeleteClick;
         this._handleCardClick = handleCardClick;
+        // this._id = id;
     };
 
     _getTemplate() {
@@ -90,6 +91,7 @@ export class Card {
         this._element.remove();
         this._element = null;
     };
+
     generateCard() {
         this._element = this._getTemplate();
         this._image = this._getImage();
