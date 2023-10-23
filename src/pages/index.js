@@ -79,8 +79,8 @@ Promise.all([api.getUserInfo(), api.getInitialCard()])
   .then(([data, cards]) => {
     userInfo.setUserAvatar(data.avatar);
     userInfo.setUserInfo(data.name, data.about);
-    cardList.renderItems(cards.reverse());
     userId = data._id;
+    cardList.renderItems(cards.reverse());
   })
   .catch(err => {
     console.log(err);
