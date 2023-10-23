@@ -38,7 +38,7 @@ function showLoading(isLoading, button, defaultText) {
 };
 
 function createCard(item) {
-  const card = new Card(item, '.element-template', like, dislike,
+  const card = new Card(item, '.element-template', like, dislike, userId,
     () => {
       confirmPopup.open();
       confirmPopup.handleConfirm(() => {
